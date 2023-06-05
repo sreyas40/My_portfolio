@@ -6,7 +6,6 @@
 html {
     height: 100%;
     width: 100%;
-    /* overflow: hidden; */
 }
 
 body {
@@ -43,10 +42,8 @@ h1 {
     font-weight: 300;
     margin: 0;
     position: relative;
-    /* left: 8%; */
-    /* left:25%; */
-    left: clamp(7.813rem,5vw,9.6rem);
-    animation: h1_animation 2s ease-out 1.5s forwards;
+    left: clamp(7.813rem, 5vw, 9.6rem);
+    animation: h1_animation 2s ease-out 1.5s forwards, h1_position_after 2s 8s forwards;
 }
 
 h1::after {
@@ -69,30 +66,50 @@ h1::after {
     }
 }
 
+@keyframes h1_position_after {
+    100% {
+        transform: translate(-200%, -300%);
+    }
+}
+
 @keyframes h1_frame_animation {
     100% {
         left: 100%;
     }
 }
 
-main p {
+main .hero_text {
     color: rgba(128, 128, 128, 0.482);
     width: fit-content;
     align-self: center;
-    background: linear-gradient(#fff,#fff);
+    background: linear-gradient(#fff, #fff);
     background-size: 200%;
     background-repeat: no-repeat;
     -webkit-background-clip: text;
     background-position: 201% 0;
-    animation: hero_text_animation 3s ease-in-out 3.3s forwards;
+    animation: hero_text_animation 3s ease-in-out 3.3s forwards, hero_text_fade 1s ease-in 5.5s forwards;
 
 }
-@keyframes hero_text_animation{
-    100%{
+
+@keyframes hero_text_animation {
+    100% {
         background-position: 0 0;
     }
 }
 
+@keyframes hero_text_fade {
+    100% {
+        opacity: 0;
+    }
+}
+
+.about{
+    width: 40%;
+    height: fit-content;
+}
+.about span{
+    font-style: italic;
+}
 .contact {
     height: 5rem;
     width: fit-content;
